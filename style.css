@@ -1,0 +1,332 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0f0d1b;
+  background-image: url("background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 200px rgba(0, 0, 0, 0.9) inset;
+  background-attachment: local;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 1%;
+}
+
+h2 {
+  text-align: left;
+  margin-top: 1%;
+}
+
+.title {
+  font-family: "Amatic SC", sans-serif;
+  font-size: 100px;
+  color: white;
+  -webkit-text-stroke: 2px black;
+}
+
+.eye {
+  display: block;
+  margin: auto;
+  width: 10%;
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.btn1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: calc(50% / 3);
+  margin: 60px;
+  background-color: #2b6f8fa8;
+  border-radius: 30px;
+  border: solid;
+  border-width: 3px;
+  border-color: #004261;
+  text-decoration: none;
+}
+
+.btn1:hover {
+  background-color: #2b6f8fec;
+  border-width: 6px;
+}
+
+.I_txt {
+  font-family: "Amatic SC";
+  font-size: 120px;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  text-align: center;
+}
+
+.btn2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: calc(50% / 3);
+  margin: 60px;
+  background-color: #2b6f8fa8;
+  border-radius: 30px;
+  border: solid;
+  border-width: 3px;
+  border-color: #004261;
+  text-decoration: none;
+}
+
+.btn2:hover {
+  background-color: #2b6f8fec;
+  border-width: 6px;
+}
+
+.II_txt {
+  font-family: "Amatic SC";
+  font-size: 120px;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  text-align: center;
+}
+
+.btn3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: calc(50% / 3);
+  margin: 60px;
+  background-color: #2b6f8fa8;
+  border-radius: 30px;
+  border: solid;
+  border-width: 4px;
+  border-color: #004261;
+  text-decoration: none;
+}
+
+.btn3:hover {
+  background-color: #2b6f8fec;
+  border-width: 6px;
+}
+
+.III_txt {
+  font-family: "Amatic SC";
+  font-size: 120px;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  text-align: center;
+}
+
+.game1_title {
+  font-size: 120px;
+  font-family: "Amatic SC";
+  color: white;
+  margin-top: 350px;
+  margin-left: 30px;
+  -webkit-text-stroke: 2px black;
+}
+
+.game1_txt {
+  font-family: "Amatic SC";
+  color: white;
+  font-size: 50px;
+  margin: 80px;
+}
+
+.six_img {
+  width: 20%;
+  margin-top: 100px;
+  margin-left: 60px;
+}
+
+.six_txt {
+  color: white;
+  font-family: "Amatic SC";
+  margin-top: 300px;
+  margin-right: 80px;
+  font-size: 40px;
+}
+
+.six_txt:hover {
+  transition: 0.5s ease;
+  transform: scale(1.04);
+}
+
+.nome_img {
+  width: 20%;
+  margin-top: 100px;
+  margin-right: 60px;
+}
+
+.nome_txt {
+  color: white;
+  font-family: "Amatic SC";
+  margin-top: 250px;
+  margin-left: 100px;
+  font-size: 40px;
+}
+
+.nome_txt:hover {
+  transition: 0.5s ease;
+  transform: scale(1.04);
+}
+
+.leech_img {
+  width: 15%;
+  margin-top: 180px;
+  margin-left: 60px;
+}
+
+.leech_txt {
+  color: white;
+  font-family: "Amatic SC";
+  margin-top: 250px;
+  margin-right: 80px;
+  font-size: 40px;
+}
+
+.leech_txt:hover {
+  transition: 0.5s ease;
+  transform: scale(1.04);
+}
+
+.janitor_img {
+  width: 20%;
+  margin-top: 100px;
+  margin-right: 60px;
+}
+
+.janitor_txt {
+  color: white;
+  font-family: "Amatic SC";
+  margin-top: 250px;
+  margin-left: 100px;
+  font-size: 40px;
+}
+
+.janitor_txt:hover {
+  transition: 0.5s ease;
+  transform: scale(1.04);
+}
+
+.chefs_img {
+  width: 20%;
+  margin-top: 80px;
+  margin-left: 60px;
+}
+
+.chefs_txt {
+  color: white;
+  font-family: "Amatic SC";
+  margin-top: 200px;
+  margin-right: 80px;
+  font-size: 40px;
+}
+
+.chefs_txt:hover {
+  transition: 0.5s ease;
+  transform: scale(1.04);
+}
+
+.guest_img {
+  width: 20%;
+  margin-top: 80px;
+  margin-right: 60px;
+}
+
+.guest_txt {
+  color: white;
+  font-family: "Amatic SC";
+  margin-top: 210px;
+  margin-left: 100px;
+  font-size: 40px;
+}
+
+.guest_txt:hover {
+  transition: 0.5s ease;
+  transform: scale(1.04);
+}
+
+.lady_img {
+  width: 18%;
+  margin-top: 100px;
+  margin-left: 60px;
+}
+
+.lady_txt {
+  color: white;
+  font-family: "Amatic SC";
+  margin-top: 160px;
+  margin-right: 80px;
+  font-size: 40px;
+}
+
+.lady_txt:hover {
+  transition: 0.5s ease;
+  transform: scale(1.04);
+}
+
+.game2_title {
+  font-size: 120px;
+  font-family: "Amatic SC";
+  color: white;
+  margin-top: 350px;
+  margin-left: 30px;
+  -webkit-text-stroke: 2px black;
+}
+
+
+
+
+
+.game3 {
+  margin-top: 2000px;
+}
+
+.game3_title {
+  font-size: 120px;
+  font-family: "Amatic SC";
+  color: white;
+  margin-top: 350px;
+  margin-left: 30px;
+  -webkit-text-stroke: 2px black;
+}
+
+.top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #2b6f8f;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 24px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s;
+}
+
+.top:hover {
+  font-size: 26px;
+  transition: 0.5s ease;
+  transform: scale(1.04);
+  background-color: #1f4f61;
+}
+
+.blank {
+  margin-top: 2000px;
+}
