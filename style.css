@@ -143,141 +143,188 @@ h2 {
 .game1_txt {
   font-family: "Amatic SC";
   color: white;
-  font-size: 50px;
+  font-size: 80px;
   margin: 80px;
+}
+
+.six {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a16;
+  padding: 80px;
+  transition: 0.5s ease;
+  margin-top: 200px;
+  gap: 60px;
+}
+
+.six:hover {
+  transform: scale(1.04);
 }
 
 .six_img {
   width: 20%;
-  margin-top: 100px;
-  margin-left: 60px;
 }
 
 .six_txt {
   color: white;
   font-family: "Amatic SC";
-  margin-top: 300px;
-  margin-right: 80px;
-  font-size: 40px;
+  margin-right: 60px;
+  font-size: 60px;
 }
 
-.six_txt:hover {
+.nome {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a16;
+  padding: 80px;
   transition: 0.5s ease;
+  gap: 60px;
+}
+
+.nome:hover {
   transform: scale(1.04);
 }
 
 .nome_img {
   width: 20%;
-  margin-top: 100px;
-  margin-right: 60px;
 }
 
 .nome_txt {
   color: white;
   font-family: "Amatic SC";
-  margin-top: 250px;
-  margin-left: 100px;
-  font-size: 40px;
+  margin-left: 60px;
+  font-size: 60px;
 }
 
-.nome_txt:hover {
+.leech {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a16;
+  padding: 80px;
   transition: 0.5s ease;
+  gap: 60px;
+}
+
+.leech:hover {
   transform: scale(1.04);
 }
 
 .leech_img {
-  width: 15%;
-  margin-top: 180px;
-  margin-left: 60px;
+  width: 20%;
 }
 
 .leech_txt {
   color: white;
   font-family: "Amatic SC";
-  margin-top: 250px;
-  margin-right: 80px;
-  font-size: 40px;
+  margin-right: 60px;
+  font-size: 60px;
 }
 
-.leech_txt:hover {
+.janitor {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a16;
+  padding: 80px;
   transition: 0.5s ease;
+  gap: 60px;
+}
+
+.janitor:hover {
   transform: scale(1.04);
 }
 
 .janitor_img {
-  width: 20%;
-  margin-top: 100px;
-  margin-right: 60px;
+  width: 20%; 
 }
 
 .janitor_txt {
   color: white;
   font-family: "Amatic SC";
-  margin-top: 250px;
-  margin-left: 100px;
-  font-size: 40px;
+  margin-left: 60px;
+  font-size: 60px;
 }
 
-.janitor_txt:hover {
+.chefs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a16;
+  padding: 80px;
   transition: 0.5s ease;
+  gap: 60px;
+}
+
+.chefs:hover {
   transform: scale(1.04);
 }
 
 .chefs_img {
   width: 20%;
-  margin-top: 80px;
-  margin-left: 60px;
 }
 
 .chefs_txt {
   color: white;
   font-family: "Amatic SC";
-  margin-top: 200px;
-  margin-right: 80px;
-  font-size: 40px;
+  margin-right: 60px;
+  font-size: 60px;
 }
 
-.chefs_txt:hover {
+.guest {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a16;
+  padding: 80px;
   transition: 0.5s ease;
+  gap: 60px;
+}
+
+.guest:hover {
   transform: scale(1.04);
 }
 
 .guest_img {
-  width: 20%;
-  margin-top: 80px;
-  margin-right: 60px;
+  width: 20%; 
 }
 
 .guest_txt {
   color: white;
   font-family: "Amatic SC";
-  margin-top: 210px;
-  margin-left: 100px;
-  font-size: 40px;
+  margin-left: 60px;
+  font-size: 60px;
 }
 
-.guest_txt:hover {
+.lady {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a16;
+  padding: 80px;
   transition: 0.5s ease;
+  gap: 60px;
+}
+
+.lady:hover {
   transform: scale(1.04);
 }
 
 .lady_img {
-  width: 18%;
-  margin-top: 100px;
-  margin-left: 60px;
+  width: 20%; 
 }
 
 .lady_txt {
   color: white;
   font-family: "Amatic SC";
-  margin-top: 160px;
-  margin-right: 80px;
-  font-size: 40px;
-}
-
-.lady_txt:hover {
-  transition: 0.5s ease;
-  transform: scale(1.04);
+  margin-left: 60px;
+  font-size: 60px;
 }
 
 .game2_title {
@@ -312,10 +359,10 @@ h2 {
   right: 30px;
   background-color: #2b6f8f;
   color: white;
-  padding: 10px 15px;
+  padding: 20px 25px;
   border-radius: 50%;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 30px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.3);
   transition: background-color 0.3s;
 }
