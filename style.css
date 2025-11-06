@@ -149,7 +149,7 @@ h2 {
 .game1_txt {
   font-family: "Amatic SC";
   color: white;
-  font-size: 60px;
+  font-size: 400%;
   margin: 80px;
 }
 
@@ -176,7 +176,7 @@ h2 {
   color: white;
   font-family: "Amatic SC";
   margin-right: 60px;
-  font-size: 40px;
+  font-size: 300%;
 }
 
 .nome {
@@ -202,7 +202,7 @@ h2 {
   color: white;
   font-family: "Amatic SC";
   margin-left: 60px;
-  font-size: 40px;
+  font-size: 300%;
 }
 
 .leech {
@@ -227,7 +227,7 @@ h2 {
   color: white;
   font-family: "Amatic SC";
   margin-right: 60px;
-  font-size: 40px;
+  font-size: 300%;
 }
 
 .janitor {
@@ -253,7 +253,7 @@ h2 {
   color: white;
   font-family: "Amatic SC";
   margin-left: 60px;
-  font-size: 40px;
+  font-size: 300%;
 }
 
 .chefs {
@@ -278,7 +278,7 @@ h2 {
   color: white;
   font-family: "Amatic SC";
   margin-right: 60px;
-  font-size: 40px;
+  font-size: 300%;
 }
 
 .guest {
@@ -304,7 +304,7 @@ h2 {
   color: white;
   font-family: "Amatic SC";
   margin-left: 60px;
-  font-size: 40px;
+  font-size: 300%;
 }
 
 .lady {
@@ -329,7 +329,7 @@ h2 {
   color: white;
   font-family: "Amatic SC";
   margin-right: 60px;
-  font-size: 40px;
+  font-size: 300%;
 }
 
 .game2_title {
