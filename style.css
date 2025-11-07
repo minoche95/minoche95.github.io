@@ -37,10 +37,19 @@ h2 {
   -webkit-text-stroke: 2px black;
 }
 
-.eye {
-  display: block;
-  margin: auto;
-  width: 10%;
+.eye_block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease;
+}
+
+.eye_block:hover {
+  transform: scale(1.1);
+}
+
+.eye_img {
+  width: 200px;
 }
 
 .box {
