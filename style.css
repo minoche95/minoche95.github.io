@@ -152,34 +152,10 @@ h2 {
   color: white;
   font-size: 400%;
   margin: 80px;
+  margin-bottom: 100px;
 }
 
-.six {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 80px;
-  transition: 0.5s ease;
-  margin-top: 100px;
-  gap: 60px;
-}
-
-.six:hover {
-  transform: scale(1.04);
-}
-
-.six_img {
-  width: 10%;
-}
-
-.six_txt {
-  color: white;
-  font-family: "Amatic SC";
-  margin-right: 60px;
-  font-size: 300%;
-}
-
-.nome {
+.perso_right {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -189,22 +165,22 @@ h2 {
   gap: 60px;
 }
 
-.nome:hover {
+.perso_right:hover {
   transform: scale(1.04);
 }
 
-.nome_img {
+.perso_right_img {
   width: 10%;
 }
 
-.nome_txt {
+.perso_right_txt {
   color: white;
   font-family: "Amatic SC";
   margin-left: 60px;
   font-size: 300%;
 }
 
-.leech {
+.perso_left {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -213,113 +189,15 @@ h2 {
   gap: 60px;
 }
 
-.leech:hover {
+.perso_left:hover {
   transform: scale(1.04);
 }
 
-.leech_img {
+.perso_left_img {
   width: 10%;
 }
 
-.leech_txt {
-  color: white;
-  font-family: "Amatic SC";
-  margin-right: 60px;
-  font-size: 300%;
-}
-
-.janitor {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: center;
-  padding: 80px;
-  transition: 0.5s ease;
-  gap: 60px;
-}
-
-.janitor:hover {
-  transform: scale(1.04);
-}
-
-.janitor_img {
-  width: 10%;
-}
-
-.janitor_txt {
-  color: white;
-  font-family: "Amatic SC";
-  margin-left: 60px;
-  font-size: 300%;
-}
-
-.chefs {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 80px;
-  transition: 0.5s ease;
-  gap: 60px;
-}
-
-.chefs:hover {
-  transform: scale(1.04);
-}
-
-.chefs_img {
-  width: 10%;
-}
-
-.chefs_txt {
-  color: white;
-  font-family: "Amatic SC";
-  margin-right: 60px;
-  font-size: 300%;
-}
-
-.guest {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: center;
-  padding: 80px;
-  transition: 0.5s ease;
-  gap: 60px;
-}
-
-.guest:hover {
-  transform: scale(1.04);
-}
-
-.guest_img {
-  width: 10%;
-}
-
-.guest_txt {
-  color: white;
-  font-family: "Amatic SC";
-  margin-left: 60px;
-  font-size: 300%;
-}
-
-.lady {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 80px;
-  transition: 0.5s ease;
-  gap: 60px;
-}
-
-.lady:hover {
-  transform: scale(1.04);
-}
-
-.lady_img {
-  width: 10%;
-}
-
-.lady_txt {
+.perso_left_txt {
   color: white;
   font-family: "Amatic SC";
   margin-right: 60px;
