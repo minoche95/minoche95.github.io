@@ -1,6 +1,6 @@
-const button = document.getElementById('dark')
+const button = document.getElementById('light')
 const body = document.body
 
 button.addEventListener('click', function() {
-    body.classList.toggle('dark')
+    body.classList.toggle('light')
 })
