@@ -160,9 +160,26 @@ body.light .btn_txt {
   -webkit-text-stroke: 2px black;
 }
 
+body.light .game_title {
+  font-size: 100px;
+  font-family: "Amatic SC";
+  color: black;
+  margin-top: 350px;
+  margin-left: 30px;
+  -webkit-text-stroke: 0.5px white;
+}
+
 .game_txt {
   font-family: "Amatic SC";
   color: white;
+  font-size: 400%;
+  margin: 80px;
+  margin-bottom: 100px;
+}
+
+body.light .game_txt {
+  font-family: "Amatic SC";
+  color: black;
   font-size: 400%;
   margin: 80px;
   margin-bottom: 100px;
@@ -193,6 +210,13 @@ body.light .btn_txt {
   font-size: 300%;
 }
 
+body.light .perso_right_txt {
+  color: black;
+  font-family: "Amatic SC";
+  margin-left: 60px;
+  font-size: 300%;
+}
+
 .perso_left {
   display: flex;
   align-items: center;
@@ -217,17 +241,25 @@ body.light .btn_txt {
   font-size: 300%;
 }
 
+body.light .perso_left_txt {
+  color: black;
+  font-family: "Amatic SC";
+  margin-right: 60px;
+  font-size: 300%;
+}
+
 .top { /* UpArrow for scrolling to top */
   position: fixed;
   bottom: 30px;
   right: 30px;
   background-color: #2b6f8f;
   color: white;
-  padding: 20px 25px;
+  padding: 18px 25px;
   border-radius: 50%;
   text-decoration: none;
   font-size: 30px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: ease 0.5s;
 }
 
 .top:hover {
@@ -235,6 +267,27 @@ body.light .btn_txt {
   transition: 0.5s ease;
   transform: scale(1.04);
   background-color: #1f4f61;
+}
+
+body.light .top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #99977f;
+  color: black;
+  padding: 18px 25px;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: ease 0.5s;
+}
+
+body.light .top:hover {
+  font-size: 26px;
+  transition: 0.5s ease;
+  transform: scale(1.04);
+  background-color: #83816c;
 }
 
 .lightBtn { /* Light mode button */
@@ -245,13 +298,14 @@ body.light .btn_txt {
   text-decoration: none;
   font-size: 30px;
   margin: 10px;
+  border-color: rgba(255, 255, 255, 0);
 }
 
 .lightBtn:hover {
   font-size: 30px;
   transition: 0.5s ease;
   transform: scale(1.04);
-  background-color: #ffff;
+  background-color: #ffffff;
 }
 
 body.light .lightBtn {
