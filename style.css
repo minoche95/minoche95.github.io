@@ -4,11 +4,12 @@
   box-sizing: border-box;
 }
 
-html {  
+html {
   scroll-behavior: smooth; /* Make the scolling effect button smooth and not instant */
 }
 
-body {  /* Vigneting effect to the whole body and background image */
+body {
+  /* Vigneting effect to the whole body and background image */
   background-color: #0f0d1b;
   background-image: url("images/background.jpg");
   background-repeat: no-repeat;
@@ -18,10 +19,11 @@ body {  /* Vigneting effect to the whole body and background image */
   box-shadow: 0 0 200px rgba(0, 0, 0, 0.9) inset;
   background-attachment: local;
   overflow-x: hidden;
-  transition: background-image 0.3s, background-color 0.3s, color 0.3s;
+  transition: 0.5s ease;
 }
 
-body.light { /* Light version of the body (background image, color... */
+body.light {
+  /* Light version of the body (background image, color... */
   background-color: #757056;
   background-image: url("images/light_back.png");
   background-repeat: no-repeat;
@@ -31,7 +33,7 @@ body.light { /* Light version of the body (background image, color... */
   box-shadow: 0 0 200px rgba(0, 0, 0, 0.9) inset;
   background-attachment: local;
   overflow-x: hidden;
-  transition: background-image 0.3s, background-color 0.3s;
+  transition: 0.5s ease;
 }
 
 h1 {
@@ -44,7 +46,8 @@ h2 {
   margin-top: 1%;
 }
 
-.title { /* Main title under the logo dark version */
+.title {
+  /* Main title under the logo dark version */
   font-family: "Amatic SC", sans-serif;
   font-size: 100px;
   color: white;
@@ -52,7 +55,8 @@ h2 {
   transition: 0.5s ease;
 }
 
-.light .title { /* Main title under the logo light version */
+.light .title {
+  /* Main title under the logo light version */
   font-family: "Amatic SC", sans-serif;
   font-size: 100px;
   color: black;
@@ -60,36 +64,42 @@ h2 {
   transition: 0.5s ease;
 }
 
-.eye_block { /* Logo placement box */
+.eye_block {
+  /* Logo placement box */
   display: flex;
   align-items: center;
   justify-content: center;
   transition: 0.5s ease;
 }
 
-.eye_block:hover { /* Logo placement box hover effect */
+.eye_block:hover {
+  /* Logo placement box hover effect */
   transform: scale(1.1);
 }
 
-.eye_img { /* Logo image dark version */
+.eye_img {
+  /* Logo image dark version */
   width: 200px;
   transition: 0.5s ease;
 }
 
-.light .eye_img { /* Logo image light version */
+.light .eye_img {
+  /* Logo image light version */
   width: 200px;
   filter: invert();
   transition: 0.5s ease;
 }
 
-.box { /* Buttons box to center */
+.box {
+  /* Buttons box to center */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 60px;
 }
 
-.btn { /* Main buttons dark version */
+.btn {
+  /* Main buttons dark version */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,13 +115,15 @@ h2 {
   transition: 0.5s ease;
 }
 
-.btn:hover { /* Main buttons hover effect dark version */
+.btn:hover {
+  /* Main buttons hover effect dark version */
   background-color: #2b6f8fec;
   border-width: 6px;
   transform: scale(1.1);
 }
 
-.btn_txt { /* Text inside buttons dark version */
+.btn_txt {
+  /* Text inside buttons dark version */
   font-family: "Amatic SC";
   font-size: 120px;
   color: white;
@@ -120,7 +132,8 @@ h2 {
   transition: 0.5s ease;
 }
 
-.light .btn { /* Main buttons light version */
+.light .btn {
+  /* Main buttons light version */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,13 +149,15 @@ h2 {
   transition: 0.5s ease;
 }
 
-.light .btn:hover { /* Main buttons hover effect light version */
+.light .btn:hover {
+  /* Main buttons hover effect light version */
   background-color: #dfdcb8;
   border-width: 6px;
   transform: scale(1.1);
 }
 
-.light .btn_txt { /* Text inside buttons light version */
+.light .btn_txt {
+  /* Text inside buttons light version */
   font-family: "Amatic SC";
   font-size: 120px;
   color: black;
@@ -151,7 +166,8 @@ h2 {
   transition: 0.5s ease;
 }
 
-.game_title { /* Title for every games dark version */
+.game_title {
+  /* Title for every games dark version */
   font-size: 100px;
   font-family: "Amatic SC";
   color: white;
@@ -160,7 +176,8 @@ h2 {
   -webkit-text-stroke: 2px black;
 }
 
-.light .game_title { /* Title for every games light version */
+.light .game_title {
+  /* Title for every games light version */
   font-size: 100px;
   font-family: "Amatic SC";
   color: black;
@@ -169,7 +186,8 @@ h2 {
   -webkit-text-stroke: 0.5px white;
 }
 
-.game_txt { /* Main presentation text of the game dark version */
+.game_txt {
+  /* Main presentation text of the game dark version */
   font-family: "Amatic SC";
   color: white;
   font-size: 400%;
@@ -177,7 +195,8 @@ h2 {
   margin-bottom: 100px;
 }
 
-.light .game_txt { /* Main presentation text of the game light version */
+.light .game_txt {
+  /* Main presentation text of the game light version */
   font-family: "Amatic SC";
   color: black;
   font-size: 400%;
@@ -185,7 +204,8 @@ h2 {
   margin-bottom: 100px;
 }
 
-.perso_right { /* Box when image is on the right */
+.perso_right {
+  /* Box when image is on the right */
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -195,29 +215,33 @@ h2 {
   gap: 60px;
 }
 
-.perso_right:hover { /* Image + Text hover effect box */
+.perso_right:hover {
+  /* Image + Text hover effect box */
   transform: scale(1.04);
 }
 
-.perso_right_img { 
+.perso_right_img {
   width: 10%;
 }
 
-.perso_right_txt { /* Text format for correct placement text dark version */
+.perso_right_txt {
+  /* Text format for correct placement text dark version */
   color: white;
   font-family: "Amatic SC";
   margin-left: 60px;
   font-size: 300%;
 }
 
-.light .perso_right_txt { /* Text format for right image placement light version */
+.light .perso_right_txt {
+  /* Text format for right image placement light version */
   color: black;
   font-family: "Amatic SC";
   margin-left: 60px;
   font-size: 300%;
 }
 
-.perso_left { /* Box when image is on the left */
+.perso_left {
+  /* Box when image is on the left */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -226,7 +250,8 @@ h2 {
   gap: 60px;
 }
 
-.perso_left:hover { /* Image + Text hover effect box */
+.perso_left:hover {
+  /* Image + Text hover effect box */
   transform: scale(1.04);
 }
 
@@ -234,21 +259,24 @@ h2 {
   width: 10%;
 }
 
-.perso_left_txt { /* Text format for correct placement dark version */
+.perso_left_txt {
+  /* Text format for correct placement dark version */
   color: white;
   font-family: "Amatic SC";
   margin-right: 60px;
   font-size: 300%;
 }
 
-.light .perso_left_txt { /* Text format for correct placement light version */
+.light .perso_left_txt {
+  /* Text format for correct placement light version */
   color: black;
   font-family: "Amatic SC";
   margin-right: 60px;
   font-size: 300%;
 }
 
-.top { /* UpArrow for scrolling to top dark version */
+.top {
+  /* UpArrow for scrolling to top dark version */
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -262,14 +290,16 @@ h2 {
   transition: ease 0.5s;
 }
 
-.top:hover { /* UpArrow for scrolling to top hover effect dark version */
+.top:hover {
+  /* UpArrow for scrolling to top hover effect dark version */
   font-size: 26px;
   transition: 0.5s ease;
   transform: scale(1.04);
   background-color: #1f4f61;
 }
 
-.light .top { /* UpArrow for scrolling to top light version */
+.light .top {
+  /* UpArrow for scrolling to top light version */
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -283,51 +313,139 @@ h2 {
   transition: ease 0.5s;
 }
 
-.light .top:hover { /* UpArrow for scrolling to top hover effect light version */
+.light .top:hover {
+  /* UpArrow for scrolling to top hover effect light version */
   font-size: 26px;
   transition: 0.5s ease;
   transform: scale(1.04);
   background-color: #83816c;
 }
 
-.lightBtn { /* Light mode button */
-  position: relative;
+.lightBtn {
+  /* Light mode button */
+  position: fixed;
   background-color: #ffffffcc;
   padding: 10px 18px;
   border-radius: 50%;
   text-decoration: none;
   font-size: 30px;
-  margin: 10px;
+  right: 20px;
+  top: 20px;
   border-color: rgba(255, 255, 255, 0);
   cursor: pointer;
+  z-index: 1; /* Put the menu in front of the text */
 }
 
-.lightBtn:hover { /* Light mode button */
+.lightBtn::after {
+  content: "☀︎";
+  transition: 0.5s ease;
+}
+
+.lightBtn:hover {
+  /* Light mode button */
   font-size: 30px;
   transition: 0.5s ease;
   transform: scale(1.04);
   background-color: #ffffff;
 }
 
-.light .lightBtn { /* Dark mode button hover effect */
+.light .lightBtn {
+  /* Dark mode button hover effect */
+  position: fixed;
   color: #ffff;
-  position: relative;
   background-color: #00000079;
   padding: 10px 18px;
   border-radius: 50%;
   text-decoration: none;
   font-size: 30px;
-  margin: 10px;
+  right: 20px;
+  top: 20px;
   cursor: pointer;
+  z-index: 1;
 }
 
-.light .lightBtn:hover { /* Dark mode button hover effect */
-  color: #ffff;
-  position: relative;
+.light .lightBtn::after {
+  content: "⏾";
+  transition: 0.5s ease;
+}
+
+.light .lightBtn:hover {
+  /* Dark mode button hover effect */
+  position: fixed;
   background-color: #000000;
-  padding: 10px 18px;
-  border-radius: 50%;
+  transition: 0.5s ease;
+}
+
+.scrollmenu {
+  /* Scrollmenu box */
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.scrollbutton {
+  /* Scrollmenu button */
+  background-color: #2b6f8fa8;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5%;
+}
+
+.scrollmenu-content {
+  /* Scrollmenu content box */
+  display: none;
+  position: absolute;
+  background-color: #2b6f8f20;
+  min-width: 160px;
+  border-radius: 5%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.scrollmenu-content a {
+  color: white;
+  padding: 12px 16px;
   text-decoration: none;
-  font-size: 30px;
-  margin: 10px;
+  display: block;
+}
+
+.scrollmenu:hover {
+  background-color: #ddd;
+  border-radius: 5%;
+  transition: 0.5s ease;
+}
+
+.light .scrollbutton {
+  /* Scrollmenu button */
+  background-color: #dfdcb8;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5%;
+}
+
+.light .scrollmenu-content {
+  /* Scrollmenu content box */
+  position: absolute;
+  background-color: #dfdcb89a;
+  min-width: 160px;
+  border-radius: 5%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1; /* Put the menu in front of the text */
+}
+
+.light .scrollmenu-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.show {
+  display: block;
 }
