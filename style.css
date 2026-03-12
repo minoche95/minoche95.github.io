@@ -99,12 +99,14 @@ h1 {
 }
 
 .search-bar {
+  color: #eee;
   margin: 40px;
   font-family: Georgia;
   background: #29395d;
   border: 1px solid #3d4b72; 
   border-radius: 20px;
   line-height: 2;
+  padding: 0 15px;
   transition: 0.5s ease;
 }
 
@@ -119,18 +121,14 @@ h1 {
   height: 420px;
   position: relative;
   border-radius: 20px;
-  /* Fond en dégradé, avec une variable pour changer la couleur selon le cocktail */
-  background: radial-gradient(
-    ellipse at center, 
-    rgba(255, 255, 255, 1) 0%, 
-    var(--card-bg) 50%);            
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, var(--card-bg) 50%);            
   border: 4px solid #d4af37;
   padding: 10px;
-  transition: 0.6s ease;
+  transition: transform 0.6s ease;
 }
 
 .card:hover {
-  /* Au survol de la carte : léger zoom et activation du "glowCard" */
+  /* Au survol de la carte : zoom et activation du "glowCard" */
   transform: scale(1.05);
   animation: 1s glowCard infinite;
 }
@@ -146,7 +144,7 @@ h1 {
 
 h3 {
   font-size: 30px;
-  margin-top: 60px;
+  margin-top: 50px;
   margin-bottom: 8px;
   text-shadow: 3px 3px  rgba(0, 0, 0, 0.3);
   color: var(--text-color);
@@ -155,6 +153,7 @@ h3 {
 .cocktail-img {
   width: 50%;
   height: auto;
+  animation: float 3s ease-in-out infinite;
 }
 
 p {
@@ -162,6 +161,34 @@ p {
   text-shadow: 3px 3px  rgba(0, 0, 0, 0.3);
   color: var(--text-color);
 }
+
+.fav_checkbox {
+  display: none;
+}
+
+.fav_heart {
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+  -webkit-text-stroke: 1px black;
+}
+
+.fav_checkbox:checked + .fav_heart {
+  color: #ff2e2e;
+  text-shadow: 0 0 10px red;
+  -webkit-text-stroke: 0px;
+}
+
+.card-wrapper {
+  animation: 0.6s fadeInUp ease-out both;
+}
+
+/* --- CHILD DE CHAQUE CARTES --- */
+.card-wrapper:nth-child(1) { animation-delay: 0s;}
+.card-wrapper:nth-child(2) { animation-delay: 0.2s;}
+.card-wrapper:nth-child(3) { animation-delay: 0.4s;}
+.card-wrapper:nth-child(4) { animation-delay: 0.6s;}
 
 /* --- DÉFINITION DES @keyframes --- */
 
@@ -189,4 +216,23 @@ p {
   0% { box-shadow: 0 0 20px #d4af37 }
   50% { box-shadow: 0 0 40px #d4af37 }
   100% { box-shadow: 0 0 20px #d4af37 }
+}
+
+@keyframes fadeInUp {
+  /* Apparition des cartes */
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+  /* Cocktails flottant */
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
 }

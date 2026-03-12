@@ -23,40 +23,56 @@
 
     <main>
         <section class="card-container">
-            <input type="search" placeholder="   Rechercher" class="search-bar" id="searchBar" oninput="search()">
+            <input type="search" placeholder="Rechercher" class="search-bar" id="searchBar" oninput="search()">
 
             <section class="cards">
-                <article class="card" style="--card-bg: #5c0808;"> <!-- Utilisation de "style" suivi de la variable "card-bg" suivi d'une couleur pour choisir notre couleur de background -->
-                    <div class="inner-border">
-                        <h3>Negroni</h3>
-                        <img src="img/negroni.png" alt="negroni" class="cocktail-img">
-                        <p class="deg">28°</p>
-                    </div>
-                </article>
+                <div class="card-wrapper">
+                    <article class="card" style="--card-bg: #5c0808;"> 
+                        <div class="inner-border">
+                            <h3>Negroni</h3>
+                            <img src="img/negroni.png" alt="negroni" class="cocktail-img">
+                            <p class="deg">28°</p>
+                            <input type="checkbox" id="fav1" class="fav_checkbox">
+                            <label for="fav1" class="fav_heart">❤</label>
+                        </div>
+                    </article>
+                </div>
 
-                <article class="card" style="--card-bg: #ee6a75;">
-                    <div class="inner-border">
-                        <h3>Paloma</h3>
-                        <img src="img/paloma.png" alt="negroni" class="cocktail-img">
-                        <p class="deg">12.2°</p>
-                    </div>
-                </article>
+                <div class="card-wrapper">
+                    <article class="card" style="--card-bg: #ee6a75;">
+                        <div class="inner-border">
+                            <h3>Paloma</h3>
+                            <img src="img/paloma.png" alt="paloma" class="cocktail-img">
+                            <p class="deg">12.2°</p>
+                            <input type="checkbox" id="fav2" class="fav_checkbox">
+                            <label for="fav2" class="fav_heart">❤</label>
+                        </div>
+                    </article>
+                </div>
 
-                <article class="card" style="--card-bg: #372214;">
-                    <div class="inner-border">
-                        <h3>Espresso Martini</h3>
-                        <img src="img/espresso-martini.png" alt="espresso-martini" class="cocktail-img">
-                        <p class="deg">16°</p>
-                    </div>
-                </article>
+                <div class="card-wrapper">
+                    <article class="card" style="--card-bg: #372214;">
+                        <div class="inner-border">
+                            <h3>Espresso Martini</h3>
+                            <img src="img/espresso-martini.png" alt="espresso-martini" class="cocktail-img">
+                            <p class="deg">16°</p>
+                            <input type="checkbox" id="fav3" class="fav_checkbox">
+                            <label for="fav3" class="fav_heart">❤</label>
+                        </div>
+                    </article>
+                </div>
 
-                <article class="card" style="--card-bg: #8d8547;">
-                    <div class="inner-border">
-                        <h3>French 75</h3>
-                        <img src="img/french-75.png" alt="espresso-martini" class="cocktail-img">
-                        <p class="deg">17°</p>
-                    </div>
-                </article>
+                <div class="card-wrapper">
+                    <article class="card" style="--card-bg: #8d8547;">
+                        <div class="inner-border">
+                            <h3>French 75</h3>
+                            <img src="img/french-75.png" alt="french-75" class="cocktail-img">
+                            <p class="deg">17°</p>
+                            <input type="checkbox" id="fav4" class="fav_checkbox">
+                            <label for="fav4" class="fav_heart">❤</label>
+                        </div>
+                    </article>
+                </div>
             </section>
         </section>
     </main>
