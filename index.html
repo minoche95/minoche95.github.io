@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixit</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Neonderthaw&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-box">
+            <img src="img/logo.png" alt="logo" class="logo">
+        </div>
+        <h1>Mixit</h1>
+        <article class="menu">
+            <div class="categorie">HOME</div>
+            <div class="categorie">CARDS</div>
+            <div class="categorie">PROFIL</div>
+        </article>
+    </header>
+
+
+    <main>
+        <section class="card-container">
+            <input type="search" placeholder="   Rechercher" class="search-bar" id="searchBar" oninput="search()">
+
+            <section class="cards">
+                <article class="card" style="--card-bg: #5c0808;"> <!-- Utilisation de "style" suivi de la variable "card-bg" suivi d'une couleur pour choisir notre couleur de background -->
+                    <div class="inner-border">
+                        <h3>Negroni</h3>
+                        <img src="img/negroni.png" alt="negroni" class="cocktail-img">
+                        <p class="deg">28°</p>
+                    </div>
+                </article>
+
+                <article class="card" style="--card-bg: #ee6a75;">
+                    <div class="inner-border">
+                        <h3>Paloma</h3>
+                        <img src="img/paloma.png" alt="negroni" class="cocktail-img">
+                        <p class="deg">12.2°</p>
+                    </div>
+                </article>
+
+                <article class="card" style="--card-bg: #372214;">
+                    <div class="inner-border">
+                        <h3>Espresso Martini</h3>
+                        <img src="img/espresso-martini.png" alt="espresso-martini" class="cocktail-img">
+                        <p class="deg">16°</p>
+                    </div>
+                </article>
+
+                <article class="card" style="--card-bg: #8d8547;">
+                    <div class="inner-border">
+                        <h3>French 75</h3>
+                        <img src="img/french-75.png" alt="espresso-martini" class="cocktail-img">
+                        <p class="deg">17°</p>
+                    </div>
+                </article>
+            </section>
+        </section>
+    </main>
+
+
+    <footer>
+
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
