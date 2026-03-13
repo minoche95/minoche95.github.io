@@ -72,7 +72,9 @@ h1 {
 }
 
 .categorie {
+  color: #eee;
   margin-top: 10px;
+  text-decoration: none;
 }
 
 .categorie:hover {
@@ -190,7 +192,86 @@ p {
 .card-wrapper:nth-child(3) { animation-delay: 0.4s;}
 .card-wrapper:nth-child(4) { animation-delay: 0.6s;}
 
-/* --- DÉFINITION DES @keyframes --- */
+
+/* --- PROFIL --- */
+.form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 100px;
+  gap: 15px;
+}
+
+.form-checkbox {
+  color: #eee;
+  font-family: Georgia;
+  background: #29395d;
+  border: 1px solid #3d4b72; 
+  border-radius: 20px;
+  line-height: 2;
+  padding: 0 15px;
+  transition: 0.5s ease;
+}
+
+.submit-button {
+  color: #eee;
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background: #29395d;
+  border: 1px solid #3d4b72; 
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.submit-button:hover {
+  transform: scale(1.05);
+}
+
+/* --- GESTION DES ERREURS / SUCCES --- */
+.message-error {
+    display: none;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.message-error.visible {
+    display: block;
+}
+
+.message-success {
+    display: none;
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.message-success.visible {
+    display: block;
+}
+
+.form-checkbox.success {
+    background-color: #c3e6cb;
+    color: #000;
+}
+
+/* --- DÉFINITION DES @keyframes / Animation --- */
+
+.transition-fade {
+  transition: 0.4s;
+  opacity: 1;
+}
+
+html.is-animating .transition-fade {
+  opacity: 0;
+}
+
 
 @keyframes glowTitle {
   /* Effet néon */

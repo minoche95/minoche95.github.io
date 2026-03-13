@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixit - Profil</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Neonderthaw&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-box">
+            <img src="img/logo.png" alt="logo" class="logo">
+        </div>
+        <h1>Mixit</h1>
+        <article class="menu">
+            <a href="" class="categorie">HOME</a>
+            <a href="index.html" class="categorie">CARDS</a>
+            <a href="profile.html" class="categorie">PROFIL</a>
+        </article>
+    </header>
+    
+    <main id="swup" class="transition-fade">
+        <form action="" method="POST" enctype="multipart/form-data" class="form" id="inscriptionForm">
+            
+            <div class="message-error" id="errorContainer">
+                <ul id="errorList"></ul>
+            </div>
+            <div class="message-success">Formulaire envoyé !</div>
+
+            <div>
+                <input type="text" name="pseudo" id="pseudo" class="form-checkbox" placeholder="Pseudo">
+            </div>
+
+            <div>
+                <input type="email" name="email" id="email" class="form-checkbox" placeholder="E-mail">
+            </div>
+
+            <div>
+                <input type="password" name="password" id="password" class="form-checkbox" placeholder="Mot de passe">
+            </div>
+
+            <div>
+                <input type="password" name="password2" id="password2" class="form-checkbox" placeholder="Confirmation MDP">
+            </div>
+
+            <button type="submit" class="submit-button">S'inscrire</button>
+        </form>
+    </main>
+
+    <script src="https://unpkg.com/swup@4"></script>
+    <script src="main.js"></script>
+</body>
+</html>
