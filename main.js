@@ -108,10 +108,3 @@ form.addEventListener('submit', function(event) {
         successContainer.classList.add('visible');
     }
 });
-
-
-
-
-
-
-

@@ -222,6 +222,7 @@ p {
   border: 1px solid #3d4b72; 
   cursor: pointer;
   transition: 0.5s ease;
+  animation: 1s pulse alternate infinite;
 }
 
 .submit-button:hover {
@@ -323,4 +324,19 @@ html.is-animating .transition-fade {
   0% { transform: translateY(0px); }
   50% { transform: translateY(-4px); }
   100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  /* Battement */
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
