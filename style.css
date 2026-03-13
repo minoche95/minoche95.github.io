@@ -261,6 +261,13 @@ p {
     color: #000;
 }
 
+/* --- MODEL VIEWER --- */
+model-viewer {
+  margin: 0 auto;
+  margin-top: 160px;
+  height: 400px;
+}
+
 /* --- DÉFINITION DES @keyframes / Animation --- */
 
 .transition-fade {
