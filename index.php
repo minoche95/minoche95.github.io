@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,9 +17,15 @@
         </div>
         <h1>Mixit</h1>
         <article class="menu">
-            <a href="index.html" class="categorie">HOME</a>
-            <a href="cards.html" class="categorie">CARDS</a>
-            <a href="profile.html" class="categorie">PROFIL</a>
+            <a href="index.php" class="categorie">HOME</a>
+            <a href="cards.php" class="categorie">CARDS</a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <span class="categorie" style="color: #ffcc00;">Salut, <?php echo htmlspecialchars($_SESSION['pseudo']); ?></span>
+                <a href="logout.php" class="categorie" data-no-swup>LOGOUT</a>
+            <?php else: ?>
+                <a href="profile.php" class="categorie">S'INSCRIRE</a>
+                <a href="login.php" class="categorie">LOGIN</a>
+            <?php endif; ?>
         </article>
     </header>
 
