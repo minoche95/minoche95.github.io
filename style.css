@@ -93,7 +93,6 @@ h1 {
 }
 
 .cards {
-  /* Aligne les cartes côte à côte et les fait passer à la ligne si manque de place */
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
