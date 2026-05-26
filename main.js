@@ -82,9 +82,6 @@ function init() {
     // Vérification de la présence du form pour éviter crash
     if (form) {
         form.addEventListener('submit', function(event) {
-            // Blocage du rafraichissement submit
-            event.preventDefault();
-
             // Définition des variables
             let pseudo = document.querySelector('#pseudo');
             let email = document.querySelector('#email');
@@ -96,28 +93,34 @@ function init() {
             let successContainer = document.querySelector('.message-success');
 
             // Réinitialisation des messages à chaque soumission
-            errorList.innerHTML = '';
-            errorContainer.classList.remove('visible');
-            successContainer.classList.remove('visible');
+            if (errorList) errorList.innerHTML = '';
+            if (errorContainer) errorContainer.classList.remove('visible');
+            if (successContainer) successContainer.classList.remove('visible');
+
+            let hasErrors = false;
 
             // VERIFICATION PSEUDO
             if(pseudo.value.length < 5) {
-                errorContainer.classList.add('visible');
+                hasErrors = true;
                 pseudo.classList.remove('success');
-                let err = document.createElement('li');
-                err.innerText = "Le champ pseudo doit contenir au moins 5 caractères";
-                errorList.appendChild(err);
+                if (errorList) {
+                    let err = document.createElement('li');
+                    err.innerText = "Le champ pseudo doit contenir au moins 5 caractères";
+                    errorList.appendChild(err);
+                }
             } else {
                 pseudo.classList.add('success');
             }
 
             // VERIFICATION EMAIL
             if(email.value.length === 0) {
-                errorContainer.classList.add('visible');
+                hasErrors = true;
                 email.classList.remove('success');
-                let err = document.createElement('li');
-                err.innerText = "Le champ email ne peut pas être vide";
-                errorList.appendChild(err);
+                if (errorList) {
+                    let err = document.createElement('li');
+                    err.innerText = "Le champ email ne peut pas être vide";
+                    errorList.appendChild(err);
+                }
             } else {
                 email.classList.add('success');
             }
@@ -126,34 +129,37 @@ function init() {
             let passCheck = new RegExp("^(?=.*[A-Z])(?=(?:.*[-+_!@#$%^&*.,?]){2}).+$");
 
             if(password.value.length < 8 || passCheck.test(password.value) == false) {
-                errorContainer.classList.add('visible');
+                hasErrors = true;
                 password.classList.remove('success');
-                let err = document.createElement('li');
-                err.innerText = "Le mot de passe doit faire 8 caractères minimum, contenir 1 majuscule et 2 caractères spéciaux";
-                errorList.appendChild(err);
+                if (errorList) {
+                    let err = document.createElement('li');
+                    err.innerText = "Le mot de passe doit faire 8 caractères minimum, contenir 1 majuscule et 2 caractères spéciaux";
+                    errorList.appendChild(err);
+                }
             } else {
                 password.classList.add('success');
             }
 
             // CONFIRMATION MDP
             if(passwordRepeat.value.length === 0 || passwordRepeat.value !== password.value) {
-                errorContainer.classList.add('visible');
+                hasErrors = true;
                 passwordRepeat.classList.remove('success');
-                let err = document.createElement('li');
-                err.innerText = "Les mots de passe ne correspondent pas";
-                errorList.appendChild(err);
+                if (errorList) {
+                    let err = document.createElement('li');
+                    err.innerText = "Les mots de passe ne correspondent pas";
+                    errorList.appendChild(err);
+                }
             } else {
                 passwordRepeat.classList.add('success');
             }
 
             // VALIDATION FINALE
-            if(
-                pseudo.classList.contains('success') &&
-                email.classList.contains('success') &&
-                password.classList.contains('success') &&
-                passwordRepeat.classList.contains('success')
-            ) {
-                successContainer.classList.add('visible');
+            if(hasErrors) {
+                event.preventDefault();
+                if (errorContainer) errorContainer.classList.add('visible');
+            } else {
+                // If no errors, let the form submit to the server
+                if (successContainer) successContainer.classList.add('visible');
             }
         });
     }
