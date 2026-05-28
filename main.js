@@ -1,41 +1,37 @@
 // Initialisation Swup
 const swup = new Swup();
 
-// Fonction de recherche existante
+// Fonction de recherche globale
 window.search = function() {
     let input = document.getElementById('searchBar').value.toLowerCase();
-    let cards = document.getElementsByClassName('card');
+    let cards = document.getElementsByClassName('card-wrapper'); // Cible le wrapper pour ne pas casser le flexbox/layout
             
     for (let i = 0; i < cards.length; i++) {
         if (!cards[i].innerText.toLowerCase().includes(input)) {
             cards[i].style.display = "none";
         } else {
-            cards[i].style.display = "flex";
+            cards[i].style.display = "block";
         }
     }
 }
 
 // Récupérer et afficher les cocktails
 async function fetchAndDisplayCocktails() {
-    const cardsContainer = document.querySelector('.cards');
-    
-    // Vérifier qu'on est sur la page des cards
+    const cardsContainer = document.querySelector('#cocktails-api-container');
     if (!cardsContainer) return; 
 
+    // Évite de re-charger si des cartes sont déjà présentes
+    if (cardsContainer.children.length > 0) return;
+
     try {
-        // Appel d'API (liste les cockails qui commencent par A)
         const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
         const data = await response.json();
-
-        // Limitation par rapport au nombre de cards
         const cocktails = data.drinks.slice(0, 4);
 
+        let cardsHTML = '';
         cocktails.forEach((cocktail, index) => {
-            // Afficher avec/sans alcool
             const isAlcoholic = cocktail.strAlcoholic; 
-
-            // HTML de la card avec les données de l'API
-            const cardHTML = `
+            cardsHTML += `
             <div class="card-wrapper">
                 <article class="card" style="--card-bg: #29395d;" data-tilt data-tilt-glare data-tilt-max-glare="0.5"> 
                     <div class="inner-border">
@@ -48,12 +44,12 @@ async function fetchAndDisplayCocktails() {
                 </article>
             </div>
             `;
-            // Ajouter la card dans le HTML
-            cardsContainer.insertAdjacentHTML('beforeend', cardHTML);
         });
 
-        // Reinitialiser VanillaTilt pour que l'effet s'applique aux cards
-        const tiltElements = document.querySelectorAll("[data-tilt]"); 
+        cardsContainer.innerHTML = cardsHTML;
+
+        // On initialise VanillaTilt sur les cartes
+        const tiltElements = cardsContainer.querySelectorAll("[data-tilt]"); 
         if (tiltElements.length > 0 && typeof VanillaTilt !== 'undefined') {
             VanillaTilt.init(tiltElements);
         }
@@ -66,23 +62,18 @@ async function fetchAndDisplayCocktails() {
 
 // Fonction init 
 function init() {
-    // Lancement de la récupération et de l'affichage des cartes via l'API
     fetchAndDisplayCocktails();
 
-    // Initialisation Vanilla Tilt
-    const tiltElements = document.querySelectorAll("[data-tilt]"); 
-    // Verification de cartes et librairie
-    if (tiltElements.length > 0 && typeof VanillaTilt !== 'undefined') {
-        VanillaTilt.init(tiltElements);
+    // Initialisation Vanilla Tilt pour les éléments statiques (s'il y en a hors API)
+    const staticTilt = document.querySelectorAll("main:not(#cards-container) [data-tilt]");
+    if (staticTilt.length > 0 && typeof VanillaTilt !== 'undefined') {
+        VanillaTilt.init(staticTilt);
     }
 
-    // Formulaire
-    let form = document.querySelector('#inscriptionForm');
-    
-    // Vérification de la présence du form pour éviter crash
+    // Gestion du Formulaire d'inscription
+    const form = document.querySelector('#inscriptionForm');
     if (form) {
         form.addEventListener('submit', function(event) {
-            // Définition des variables
             let pseudo = document.querySelector('#pseudo');
             let email = document.querySelector('#email');
             let password = document.querySelector('#password');
@@ -92,81 +83,70 @@ function init() {
             let errorList = document.querySelector('#errorList');
             let successContainer = document.querySelector('.message-success');
 
-            // Réinitialisation des messages à chaque soumission
             if (errorList) errorList.innerHTML = '';
             if (errorContainer) errorContainer.classList.remove('visible');
             if (successContainer) successContainer.classList.remove('visible');
 
             let hasErrors = false;
 
-            // VERIFICATION PSEUDO
             if(pseudo.value.length < 5) {
                 hasErrors = true;
                 pseudo.classList.remove('success');
-                if (errorList) {
-                    let err = document.createElement('li');
-                    err.innerText = "Le champ pseudo doit contenir au moins 5 caractères";
-                    errorList.appendChild(err);
-                }
+                appendError("Le champ pseudo doit contenir au moins 5 caractères");
             } else {
                 pseudo.classList.add('success');
             }
 
-            // VERIFICATION EMAIL
             if(email.value.length === 0) {
                 hasErrors = true;
                 email.classList.remove('success');
-                if (errorList) {
-                    let err = document.createElement('li');
-                    err.innerText = "Le champ email ne peut pas être vide";
-                    errorList.appendChild(err);
-                }
+                appendError("Le champ email ne peut pas être vide");
             } else {
                 email.classList.add('success');
             }
 
-            // VERIFICATION MOT DE PASSE
-            let passCheck = new RegExp("^(?=.*[A-Z])(?=(?:.*[-+_!@#$%^&*.,?]){2}).+$");
+            let passCheck = /^(?=.*[A-Z])(?=(?:.*[-+_!@#$%^&*.,?]){2}).{8,}$/;
 
-            if(password.value.length < 8 || passCheck.test(password.value) == false) {
+            if(!passCheck.test(password.value)) {
                 hasErrors = true;
                 password.classList.remove('success');
-                if (errorList) {
-                    let err = document.createElement('li');
-                    err.innerText = "Le mot de passe doit faire 8 caractères minimum, contenir 1 majuscule et 2 caractères spéciaux";
-                    errorList.appendChild(err);
-                }
+                appendError("Le mot de passe doit faire 8 caractères minimum, contenir 1 majuscule et 2 caractères spéciaux");
             } else {
                 password.classList.add('success');
             }
 
-            // CONFIRMATION MDP
             if(passwordRepeat.value.length === 0 || passwordRepeat.value !== password.value) {
                 hasErrors = true;
                 passwordRepeat.classList.remove('success');
-                if (errorList) {
-                    let err = document.createElement('li');
-                    err.innerText = "Les mots de passe ne correspondent pas";
-                    errorList.appendChild(err);
-                }
+                appendError("Les mots de passe ne correspondent pas");
             } else {
                 passwordRepeat.classList.add('success');
             }
 
-            // VALIDATION FINALE
             if(hasErrors) {
                 event.preventDefault();
                 if (errorContainer) errorContainer.classList.add('visible');
             } else {
-                // If no errors, let the form submit to the server
                 if (successContainer) successContainer.classList.add('visible');
+            }
+
+            function appendError(message) {
+                if (errorList) {
+                    let err = document.createElement('li');
+                    err.innerText = message;
+                    errorList.appendChild(err);
+                }
             }
         });
     }
 }
 
-// Chargement des scripts au premiet lancement
-init();
+// Lancement au premier chargement
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
 
-// A chaque transition : swup init les scripts
+// À chaque transition Swup complète
 swup.hooks.on('page:view', init);

@@ -35,7 +35,7 @@ session_start();
     <section class="card-container">
         <input type="search" placeholder="Rechercher" class="search-bar" id="searchBar" oninput="search()">
 
-        <section class="cards" id="cards-container">
+        <section class="cards" id="cocktails-api-container">
         </section>
     </section>
 </main>

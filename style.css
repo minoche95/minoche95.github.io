@@ -39,21 +39,18 @@ h1 {
 /* --- LOGO --- */
 .logo-box {
   /* Place le logo en haut à gauche par-dessus le reste */
-  position: absolute;
-  top: 10px;
-  left: 250px;
   background: #0d1732;
-  border-radius: 100%;
-  width: 140px;
-  height: 120px;
   display: flex;
   justify-content: center;
-  z-index: 1;
+  align-items: center;
 }
 
 .logo {
-  width: 60%;
-  height: 90%;
+  display: flex;
+  justify-content: left;
+  margin: 15px;
+  width: 11vh;
+  height: 12vh;
 }
 
 .logo:hover {
@@ -69,6 +66,7 @@ h1 {
   display: flex;
   gap: 40px;
   height: 40px;
+  text-decoration: none;
 }
 
 .categorie {
@@ -96,6 +94,8 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  justify-content: center;
+  width: 100%;
 }
 
 .search-bar {
@@ -128,7 +128,7 @@ h1 {
 }
 
 .card:hover {
-  /* Au survol de la carte : zoom et activation du "glowCard" */
+  /* Zoom et activation du "glowCard" */
   transform: scale(1.05);
   animation: 1s glowCard infinite;
 }
@@ -267,7 +267,7 @@ model-viewer {
   height: 400px;
 }
 
-/* --- DÉFINITION DES @keyframes / Animation --- */
+/* --- DÉFINITION @keyframes / Animation --- */
 
 .transition-fade {
   transition: 0.4s;

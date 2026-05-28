@@ -83,8 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <?php if (isset($_SESSION['success_message'])): ?>
             <p style="color: #4CAF50; text-align: center;">
-                <?php
-                echo $_SESSION['success_message'];
+                <?php 
+                echo $_SESSION['success_message']; 
+                unset($_SESSION['success_message']);
                 ?>
             </p>
         <?php endif; ?>
