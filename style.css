@@ -1,3 +1,8 @@
+/* --- IMPORTATION DES MODULES --- */
+@import url("css/home.css");
+@import url("css/cards.css");
+@import url("css/forms.css");
+
 /* --- BASE ET FOND DE PAGE --- */
 * {
   margin: 0;
@@ -6,269 +11,85 @@
 }
 
 :root {
-  /* Variables globales */
   --text-color: #eee;
 }
 
 body {
-  /* Image de fond centrée et police par défaut */
   background-image: url("img/background.png");
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   background-size: 70%;
   background-position: center;
+  background-attachment: fixed;
 }
 
 /* --- EN-TÊTE ET TITRE --- */
 header {
   background: #0d1732;
+  width: 100%;
 }
 
-.top-box {
-  display: flex;
-  justify-content: center;
-}
-
-h1 {
-  font-family: "Neonderthaw";
-  font-size: 80px;
-  text-align: center;
-  color: var(--text-color);
-  animation: glowTitle 0.8s alternate infinite;
-}
-
-/* --- LOGO --- */
 .logo-box {
-  /* Place le logo en haut à gauche par-dessus le reste */
-  background: #0d1732;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 15px 40px;
+  width: 100%;
+  position: relative;
 }
 
 .logo {
-  display: flex;
-  justify-content: left;
-  margin: 15px;
-  width: 11vh;
-  height: 12vh;
+  position: absolute;
+  left: 40px;
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
 .logo:hover {
   animation: 0.6s shake;
 }
 
+h1 {
+  font-family: "Neonderthaw", cursive;
+  font-size: 80px;
+  text-align: center;
+  color: var(--text-color);
+  animation: glowTitle 0.8s alternate infinite;
+  margin: 0;
+  line-height: 1;
+}
+
 /* --- MENU DE NAVIGATION --- */
 .menu {
   color: #fff;
   background: #1f3566;
-  text-align: center;
-  justify-content: center;
   display: flex;
+  justify-content: center;
   gap: 40px;
   height: 40px;
-  text-decoration: none;
+  align-items: center;
 }
 
 .categorie {
-  margin-top: 10px;
   text-decoration: none;
+  color: #fff;
+  transition: transform 0.2s ease;
 }
 
 .categorie:hover {
   cursor: pointer;
   border-bottom: 2px solid #80d4f0;
-  transition: 0.2s ease;
   transform: scale(1.05);
 }
 
-/* --- CONTENEUR DES CARTES DE COCKTAILS --- */
-.card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
+footer {
   width: 100%;
-}
-
-.search-bar {
-  color: #eee;
-  margin: 40px;
-  font-family: Georgia;
-  background: #29395d;
-  border: 1px solid #3d4b72; 
-  border-radius: 20px;
-  line-height: 2;
-  padding: 0 15px;
-  transition: 0.5s ease;
-}
-
-.search-bar:hover {
-  transform: scale(1.05);
-  box-shadow: 2px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* --- DESIGN DES CARTES --- */
-.card {
-  width: 300px;
-  height: 420px;
-  position: relative;
-  border-radius: 20px;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 1) 0%, var(--card-bg) 50%);            
-  border: 4px solid #d4af37;
-  padding: 10px;
-  transition: transform 0.6s ease;
-}
-
-.card:hover {
-  /* Zoom et activation du "glowCard" */
-  transform: scale(1.05);
-  animation: 1s glowCard infinite;
-}
-
-.inner-border {
-  width: 100%;
-  height: 100%;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  border-radius: 12px;
-  box-sizing: border-box;
+  padding: 20px;
   text-align: center;
 }
 
-h3 {
-  font-size: 30px;
-  margin-top: 50px;
-  margin-bottom: 8px;
-  text-shadow: 3px 3px  rgba(0, 0, 0, 0.3);
-  color: var(--text-color);
-}
-
-.cocktail-img {
-  width: 50%;
-  height: auto;
-  animation: float 3s ease-in-out infinite;
-}
-
-p {
-  margin-top: 15px;
-  text-shadow: 3px 3px  rgba(0, 0, 0, 0.3);
-  color: var(--text-color);
-}
-
-.fav_checkbox {
-  display: none;
-}
-
-.fav_heart {
-  font-size: 40px;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s ease;
-  -webkit-text-stroke: 1px black;
-}
-
-.fav_checkbox:checked + .fav_heart {
-  color: #ff2e2e;
-  text-shadow: 0 0 10px red;
-  -webkit-text-stroke: 0px;
-}
-
-.card-wrapper {
-  animation: 0.6s fadeInUp ease-out both;
-}
-
-/* --- CHILD DE CHAQUE CARTES --- */
-.card-wrapper:nth-child(1) { animation-delay: 0s;}
-.card-wrapper:nth-child(2) { animation-delay: 0.2s;}
-.card-wrapper:nth-child(3) { animation-delay: 0.4s;}
-.card-wrapper:nth-child(4) { animation-delay: 0.6s;}
-
-
-/* --- PROFIL --- */
-.form {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin-top: 100px;
-  gap: 15px;
-}
-
-.form-checkbox {
-  color: #eee;
-  font-family: Georgia;
-  background: #29395d;
-  border: 1px solid #3d4b72; 
-  border-radius: 20px;
-  line-height: 2;
-  padding: 0 15px;
-  transition: 0.5s ease;
-}
-
-.submit-button {
-  color: #eee;
-  width: 100px;
-  margin: 0 auto;
-  border-radius: 10px;
-  background: #29395d;
-  border: 1px solid #3d4b72; 
-  cursor: pointer;
-  transition: 0.5s ease;
-  animation: 1s pulse alternate infinite;
-}
-
-.submit-button:hover {
-  transform: scale(1.05);
-}
-
-/* --- GESTION DES ERREURS / SUCCES --- */
-.message-error {
-    display: none;
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: left;
-    width: 500px;
-    margin: 0 auto;
-}
-
-.message-error.visible {
-    display: block;
-}
-
-.message-success {
-    display: none;
-    background-color: #d4edda;
-    color: #155724;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.message-success.visible {
-    display: block;
-}
-
-.form-checkbox.success {
-    background-color: #c3e6cb;
-    color: #000;
-}
-
-/* --- MODEL VIEWER --- */
-model-viewer {
-  margin: 0 auto;
-  margin-top: 160px;
-  height: 400px;
-}
-
-/* --- DÉFINITION @keyframes / Animation --- */
-
+/* --- ANIMATIONS GLOBALES & SWUP --- */
 .transition-fade {
   transition: 0.4s;
   opacity: 1;
@@ -278,63 +99,93 @@ html.is-animating .transition-fade {
   opacity: 0;
 }
 
-
 @keyframes glowTitle {
-  /* Effet néon */
   from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073;
   }
   to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6;
   }
 }
 
 @keyframes shake {
-  /* Pivoter l'élément de gauche à droite */
-  0% { transform: rotate(0deg); }
+  0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(30deg); }
   50% { transform: rotate(0deg); }
   75% { transform: rotate(-30deg); }
-  100% { transform: rotate(0deg); }
 }
 
-@keyframes glowCard {
-  /* Pulse de l'ombre de la carte */
-  0% { box-shadow: 0 0 20px #d4af37 }
-  50% { box-shadow: 0 0 40px #d4af37 }
-  100% { box-shadow: 0 0 20px #d4af37 }
-}
-
-@keyframes fadeInUp {
-  /* Apparition des cartes */
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes float {
-  /* Cocktails flottant */
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-4px); }
-  100% { transform: translateY(0px); }
-}
-
-@keyframes pulse {
-  /* Battement */
-  0% {
-    transform: scale(1);
+/* --- RESPONSIVE MOBILE --- */
+@media screen and (max-width: 768px) {
+  .logo-box {
+    flex-direction: column;
+    padding: 20px 10px;
+    gap: 10px;
   }
 
-  50% {
-    transform: scale(1.1);
+  .logo {
+    position: static;
+    height: 70px;
   }
 
-  100% {
-    transform: scale(1);
+  h1 {
+    font-size: 50px;
+  }
+
+  /* Style du bouton burger */
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 10;
+    position: absolute;
+    right: 20px;
+    top: 35px;
+  }
+
+  .burger-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+
+  /* Masquage du menu par défaut */
+  .menu {
+    display: none;
+    flex-direction: column;
+    height: auto;
+    padding: 15px 0;
+    gap: 15px;
+    background: #1f3566;
+  }
+
+  /* Affichage du menu quand il est actif */
+  .menu.active {
+    display: flex;
+  }
+
+  .categorie {
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+  }
+
+  /* Animation du burger en croix (X) */
+  .burger-menu.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .burger-menu.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger-menu.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
   }
 }

@@ -1,0 +1,83 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 100px auto 0 auto;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+  padding: 0 20px;
+}
+
+.form-checkbox {
+  color: #eee;
+  font-family: Georgia, serif;
+  background: #29395d;
+  border: 1px solid #3d4b72; 
+  border-radius: 20px;
+  line-height: 2;
+  padding: 0 15px;
+  transition: 0.5s ease;
+  width: 100%;
+}
+
+.submit-button {
+  color: #eee;
+  width: 130px;
+  padding: 8px 0;
+  margin: 10px auto 0 auto;
+  border-radius: 10px;
+  background: #29395d;
+  border: 1px solid #3d4b72; 
+  cursor: pointer;
+  transition: 0.5s ease;
+  animation: 1s pulse alternate infinite;
+}
+
+.submit-button:hover {
+  transform: scale(1.05);
+}
+
+.form a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.message-error {
+    display: none;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.message-error.visible {
+    display: block;
+}
+
+.message-success {
+    display: none;
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.message-success.visible {
+    display: block;
+}
+
+.form-checkbox.success {
+    background-color: #c3e6cb;
+    color: #000;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}

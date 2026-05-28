@@ -16,7 +16,14 @@
             <img src="img/logo.png" alt="logo" class="logo">
             <h1>Mixit</h1>
         </div>
-        <article class="menu">
+        
+        <div class="burger-menu" id="burgerToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <article class="menu" id="navMenu">
             <a href="index.php" class="categorie">HOME</a>
             <a href="cards.php" class="categorie">CARDS</a>
             <?php if (isset($_SESSION['user_id'])): ?>
@@ -30,6 +37,7 @@
     </header>
 
     <main id="swup" class="transition-fade">
+        <link rel="stylesheet" href="css.home.css">
         <model-viewer 
         alt="martini" 
         src="3D/martini.glb" 

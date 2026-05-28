@@ -1,10 +1,9 @@
-// Initialisation Swup
 const swup = new Swup();
 
 // Fonction de recherche globale
 window.search = function() {
     let input = document.getElementById('searchBar').value.toLowerCase();
-    let cards = document.getElementsByClassName('card-wrapper'); // Cible le wrapper pour ne pas casser le flexbox/layout
+    let cards = document.getElementsByClassName('card-wrapper');
             
     for (let i = 0; i < cards.length; i++) {
         if (!cards[i].innerText.toLowerCase().includes(input)) {
@@ -15,31 +14,50 @@ window.search = function() {
     }
 }
 
+// Fonction de filtrage
+window.filterCategory = function(type) {
+    let cards = document.getElementsByClassName('card-wrapper');
+    
+    for (let i = 0; i < cards.length; i++) {
+        if (type === 'all' || cards[i].getAttribute('data-type') === type) {
+            cards[i].style.display = "block";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+
 // Récupérer et afficher les cocktails
 async function fetchAndDisplayCocktails() {
     const cardsContainer = document.querySelector('#cocktails-api-container');
     if (!cardsContainer) return; 
 
-    // Évite de re-charger si des cartes sont déjà présentes
     if (cardsContainer.children.length > 0) return;
 
     try {
         const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
         const data = await response.json();
-        const cocktails = data.drinks.slice(0, 4);
+        const cocktails = data.drinks;
+
+        const savedFavorites = JSON.parse(localStorage.getItem('mixit_favorites')) || [];
 
         let cardsHTML = '';
-        cocktails.forEach((cocktail, index) => {
+        cocktails.forEach((cocktail) => {
             const isAlcoholic = cocktail.strAlcoholic; 
+            const isFavorite = savedFavorites.includes(cocktail.strDrink);
+            const checkedAttribute = isFavorite ? 'checked' : '';
+
             cardsHTML += `
-            <div class="card-wrapper">
+            <div class="card-wrapper" data-type="${isAlcoholic}">
                 <article class="card" style="--card-bg: #29395d;" data-tilt data-tilt-glare data-tilt-max-glare="0.5"> 
                     <div class="inner-border">
-                        <h3>${cocktail.strDrink}</h3>
-                        <img src="${cocktail.strDrinkThumb}/small" alt="${cocktail.strDrink}" class="cocktail-img">
+                        <a href="detail.php?id=${cocktail.idDrink}" style="text-decoration: none; color: inherit;">
+                            <h3>${cocktail.strDrink}</h3>
+                            <img src="${cocktail.strDrinkThumb}/small" alt="${cocktail.strDrink}" class="cocktail-img">
+                        </a>
                         <p class="deg">${isAlcoholic}</p>
-                        <input type="checkbox" id="fav${index}" class="fav_checkbox">
-                        <label for="fav${index}" class="fav_heart">❤</label>
+                        <input type="checkbox" id="fav-${cocktail.strDrink}" class="fav_checkbox" ${checkedAttribute}>
+                        <label for="fav-${cocktail.strDrink}" class="fav_heart">❤</label>
                     </div>
                 </article>
             </div>
@@ -48,7 +66,22 @@ async function fetchAndDisplayCocktails() {
 
         cardsContainer.innerHTML = cardsHTML;
 
-        // On initialise VanillaTilt sur les cartes
+        const checkboxes = cardsContainer.querySelectorAll('.fav_checkbox');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                let currentFavorites = JSON.parse(localStorage.getItem('mixit_favorites')) || [];
+                const cocktailName = this.id.replace('fav-', '');
+
+                if (this.checked) {
+                    currentFavorites.push(cocktailName);
+                } else {
+                    currentFavorites = currentFavorites.filter(name => name !== cocktailName);
+                }
+
+                localStorage.setItem('mixit_favorites', JSON.stringify(currentFavorites));
+            });
+        });
+
         const tiltElements = cardsContainer.querySelectorAll("[data-tilt]"); 
         if (tiltElements.length > 0 && typeof VanillaTilt !== 'undefined') {
             VanillaTilt.init(tiltElements);
@@ -60,17 +93,54 @@ async function fetchAndDisplayCocktails() {
     }
 }
 
-// Fonction init 
+// Récupérer et afficher les détails d'un cocktail
+async function fetchCocktailDetail() {
+    const detailContainer = document.querySelector('#cocktail-detail-container');
+    if (!detailContainer) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const cocktailId = urlParams.get('id');
+
+    if (!cocktailId) {
+        detailContainer.innerHTML = "<p style='color: white;'>Aucun cocktail sélectionné.</p>";
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktailId}`);
+        const data = await response.json();
+        const cocktail = data.drinks[0];
+
+        const instructions = cocktail.strInstructionsFR || cocktail.strInstructions || "Aucune description disponible.";
+
+        detailContainer.innerHTML = `
+            <div class="detail-card">
+                <h2>${cocktail.strDrink}</h2>
+                <img src="${cocktail.strDrinkThumb}" alt="${cocktail.strDrink}" class="detail-img">
+                <div class="detail-info">
+                    <p class="detail-type"><strong>Type :</strong> ${cocktail.strAlcoholic}</p>
+                    <p class="detail-text"><strong>Instructions :</strong> ${instructions}</p>
+                </div>
+                <a href="cards.php" class="back-button">Retour aux cocktails</a>
+            </div>
+        `;
+    } catch (error) {
+        console.error("Erreur chargement détails :", error);
+        detailContainer.innerHTML = "<p style='color: white;'>Erreur lors du chargement des détails.</p>";
+    }
+}
+
+// Fonction globale d'initialisation
 function init() {
     fetchAndDisplayCocktails();
+    fetchCocktailDetail();
 
-    // Initialisation Vanilla Tilt pour les éléments statiques (s'il y en a hors API)
     const staticTilt = document.querySelectorAll("main:not(#cards-container) [data-tilt]");
     if (staticTilt.length > 0 && typeof VanillaTilt !== 'undefined') {
         VanillaTilt.init(staticTilt);
     }
 
-    // Gestion du Formulaire d'inscription
+    // Formulaire d'inscription
     const form = document.querySelector('#inscriptionForm');
     if (form) {
         form.addEventListener('submit', function(event) {
@@ -139,14 +209,43 @@ function init() {
             }
         });
     }
+
+    // Menu Burger
+    const burgerToggle = document.querySelector('#burgerToggle');
+    const navMenu = document.querySelector('#navMenu');
+
+    if (burgerToggle && navMenu) {
+        burgerToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+
+        burgerToggle.addEventListener('click', function() {
+            burgerToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // Pop-up Booster
+    const boosterBtn = document.querySelector('#boosterBtn');
+    const boosterPopup = document.querySelector('#boosterPopup');
+    const closePopupBtn = document.querySelector('#closePopupBtn');
+
+    if (boosterBtn && boosterPopup) {
+        boosterBtn.addEventListener('click', function() {
+            boosterPopup.style.display = 'flex';
+        });
+
+        boosterPopup.addEventListener('click', function(event) {
+            if (event.target === boosterPopup || event.target === closePopupBtn) {
+                boosterPopup.style.display = 'none';
+            }
+        });
+    }
 }
 
-// Lancement au premier chargement
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
     init();
 }
 
-// À chaque transition Swup complète
 swup.hooks.on('page:view', init);
