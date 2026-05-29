@@ -102,8 +102,6 @@ async function fetchAndDisplayCocktails() {
                 }
 
                 localStorage.setItem('mixit_favorites', JSON.stringify(currentFavorites));
-                
-                // Optionnel : Met à jour immédiatement si le composant profil est là
                 updateProfileStats();
             });
         });
@@ -169,7 +167,7 @@ window.resetLocalStorage = function() {
 function init() {
     fetchAndDisplayCocktails();
     fetchCocktailDetail();
-    updateProfileStats(); // Calcule et affiche les stats au chargement de la vue
+    updateProfileStats();
 
     const staticTilt = document.querySelectorAll("main:not(#cards-container) [data-tilt]");
     if (staticTilt.length > 0 && typeof VanillaTilt !== 'undefined') {
@@ -326,7 +324,7 @@ function init() {
                             targetCard.classList.add('owned');
                         }
 
-                        // Mettre à jour les compteurs immédiatement si on est sur la page
+                        // Mettre à jour les compteurs si on est sur la page
                         updateProfileStats();
                     }, 3000);
 

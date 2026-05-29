@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mixit - Profil</title>
+    <title>Mixit - Produits</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Neonderthaw&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
@@ -30,38 +30,23 @@
         </article>
     </header>
 
-    <main id="swup" class="transition-fade">
-        <section class="profile-container">
-            
-            <div class="profile-card">
-                <div class="avatar-box">
-                    <img src="img/avatar.jpg" alt="Avatar Utilisateur" class="profile-avatar">
-                </div>
-                <h2>Minoche</h2>
-                <p class="profile-title">Collectionneur de Cocktails</p>
-            </div>
+    <main>
+    <p class="IOT-intro">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero sunt, iusto facere explicabo deleniti consequatur eos provident labore debitis error ipsum nam repellat sit rem? Consectetur qui nemo perspiciatis. Dolorum.
+    </p>
+    
+    <div class="products-grid">
+        <div class="IOT_box">
+            <h3>INTERFACE CLIENT</h3>
+            <img src="img/IOT2.jpeg" alt="client">
+        </div>
+        <div class="IOT_box">
+            <h3>CLIENT</h3>
+            <img src="img/IOT1.jpeg" alt="server">
+        </div>
+    </div>
+</main>
 
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <h3 id="stat-owned">0</h3>
-                    <p>Cartes possédées</p>
-                </div>
-                <div class="stat-box">
-                    <h3 id="stat-boosters">0</h3>
-                    <p>Boosters ouverts</p>
-                </div>
-                <div class="stat-box">
-                    <h3 id="stat-favorites">0</h3>
-                    <p>Cocktails favoris</p>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <button onclick="resetLocalStorage()" style="position: fixed; bottom: 10px; left: 10px; z-index: 9999; opacity: 0.7;">
-        Reset Dev Data
-    </button>
-    
     <script defer src="https://unpkg.com/swup@4"></script>
     <script defer src="https://unpkg.com/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
     <script defer type="module" src="https://unpkg.com/@google/model-viewer@latest/dist/model-viewer.min.js"></script>
