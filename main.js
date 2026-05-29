@@ -27,6 +27,23 @@ window.filterCategory = function(type) {
     }
 }
 
+// Mettre à jour les statistiques de la page profil
+function updateProfileStats() {
+    const statOwned = document.getElementById('stat-owned');
+    const statBoosters = document.getElementById('stat-boosters');
+    const statFavorites = document.getElementById('stat-favorites');
+
+    // Récupération des données du localStorage
+    const ownedCards = JSON.parse(localStorage.getItem('mixit_owned')) || [];
+    const favorites = JSON.parse(localStorage.getItem('mixit_favorites')) || [];
+    const boostersCount = localStorage.getItem('mixit_boosters_opened') || 0;
+
+    // Injection dans le HTML si les éléments existent sur la page actuelle
+    if (statOwned) statOwned.innerText = ownedCards.length;
+    if (statBoosters) statBoosters.innerText = boostersCount;
+    if (statFavorites) statFavorites.innerText = favorites.length;
+}
+
 // Récupérer et afficher les cocktails
 async function fetchAndDisplayCocktails() {
     const cardsContainer = document.querySelector('#cocktails-api-container');
@@ -40,24 +57,30 @@ async function fetchAndDisplayCocktails() {
         const cocktails = data.drinks;
 
         const savedFavorites = JSON.parse(localStorage.getItem('mixit_favorites')) || [];
+        const ownedCards = JSON.parse(localStorage.getItem('mixit_owned')) || [];
 
         let cardsHTML = '';
         cocktails.forEach((cocktail) => {
             const isAlcoholic = cocktail.strAlcoholic; 
             const isFavorite = savedFavorites.includes(cocktail.strDrink);
             const checkedAttribute = isFavorite ? 'checked' : '';
+            
+            const isOwned = ownedCards.includes(cocktail.strDrink) ? 'owned' : '';
 
             cardsHTML += `
-            <div class="card-wrapper" data-type="${isAlcoholic}">
+            <div class="card-wrapper ${isOwned}" data-type="${isAlcoholic}" data-name="${cocktail.strDrink}">
                 <article class="card" style="--card-bg: #29395d;" data-tilt data-tilt-glare data-tilt-max-glare="0.5"> 
-                    <div class="inner-border">
-                        <a href="detail.php?id=${cocktail.idDrink}" style="text-decoration: none; color: inherit;">
+                    <div class="inner-border" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                        <a href="detail.php?id=${cocktail.idDrink}" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center;">
                             <h3>${cocktail.strDrink}</h3>
                             <img src="${cocktail.strDrinkThumb}/small" alt="${cocktail.strDrink}" class="cocktail-img">
                         </a>
                         <p class="deg">${isAlcoholic}</p>
-                        <input type="checkbox" id="fav-${cocktail.strDrink}" class="fav_checkbox" ${checkedAttribute}>
-                        <label for="fav-${cocktail.strDrink}" class="fav_heart">❤</label>
+                        <div class="fav-container" style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 5px;">
+                            <input type="checkbox" id="fav-${cocktail.strDrink}" class="fav_checkbox" ${checkedAttribute}>
+                            <label for="fav-${cocktail.strDrink}" class="fav_heart">❤</label>
+                            <span class="owned-text" style="color: #d4af37; font-size: 14px; font-weight: bold; text-transform: uppercase;">Possédé</span>
+                        </div>
                     </div>
                 </article>
             </div>
@@ -79,6 +102,9 @@ async function fetchAndDisplayCocktails() {
                 }
 
                 localStorage.setItem('mixit_favorites', JSON.stringify(currentFavorites));
+                
+                // Optionnel : Met à jour immédiatement si le composant profil est là
+                updateProfileStats();
             });
         });
 
@@ -130,10 +156,20 @@ async function fetchCocktailDetail() {
     }
 }
 
+// Fonction globale de debug pour réinitialiser l'application
+window.resetLocalStorage = function() {
+    if (confirm("Voulez-vous vraiment réinitialiser toutes les données (cartes, boosters, favoris) ?")) {
+        localStorage.clear();
+        alert("LocalStorage vidé avec succès !");
+        location.reload();
+    }
+}
+
 // Fonction globale d'initialisation
 function init() {
     fetchAndDisplayCocktails();
     fetchCocktailDetail();
+    updateProfileStats(); // Calcule et affiche les stats au chargement de la vue
 
     const staticTilt = document.querySelectorAll("main:not(#cards-container) [data-tilt]");
     if (staticTilt.length > 0 && typeof VanillaTilt !== 'undefined') {
@@ -224,15 +260,81 @@ function init() {
         });
     }
 
-    // Pop-up Booster
+    // Pop-up Booster & Roulette
     const boosterBtn = document.querySelector('#boosterBtn');
     const boosterPopup = document.querySelector('#boosterPopup');
     const closePopupBtn = document.querySelector('#closePopupBtn');
+    const boosterImg = document.querySelector('#boosterImg');
+    const rouletteContainer = document.querySelector('#rouletteContainer');
+    const rouletteWrapper = document.querySelector('#rouletteWrapper');
+    const winMessage = document.querySelector('#winMessage');
 
     if (boosterBtn && boosterPopup) {
         boosterBtn.addEventListener('click', function() {
             boosterPopup.style.display = 'flex';
+            if (boosterImg) boosterImg.style.display = 'block';
+            if (rouletteContainer) rouletteContainer.style.display = 'none';
+            if (winMessage) winMessage.style.display = 'none';
         });
+
+        if (boosterImg) {
+            boosterImg.addEventListener('click', async function() {
+                boosterImg.style.display = 'none';
+                rouletteContainer.style.display = 'block';
+
+                try {
+                    const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
+                    const data = await response.json();
+                    const cocktails = data.drinks;
+
+                    let rouletteHTML = '';
+                    let sequence = [];
+                    for (let i = 0; i < 15; i++) {
+                        let randomCocktail = cocktails[Math.floor(Math.random() * cocktails.length)];
+                        sequence.push(randomCocktail);
+                        rouletteHTML += `<img src="${randomCocktail.strDrinkThumb}/preview" alt="item">`;
+                    }
+                    rouletteWrapper.innerHTML = rouletteHTML;
+
+                    rouletteWrapper.style.transition = 'none';
+                    rouletteWrapper.style.transform = 'translateY(0)';
+                    rouletteWrapper.offsetHeight;
+
+                    const itemHeight = 280;
+                    rouletteWrapper.style.transition = 'transform 3s cubic-bezier(0.1, 1, 0.1, 1)';
+                    rouletteWrapper.style.transform = `translateY(-${13 * itemHeight}px)`;
+
+                    setTimeout(() => {
+                        const winner = sequence[13];
+                        winMessage.innerText = `Tu as obtenu : ${winner.strDrink} !`;
+                        winMessage.style.display = 'block';
+
+                        // Sauvegarde de la carte obtenue
+                        let ownedCards = JSON.parse(localStorage.getItem('mixit_owned')) || [];
+                        if (!ownedCards.includes(winner.strDrink)) {
+                            ownedCards.push(winner.strDrink);
+                            localStorage.setItem('mixit_owned', JSON.stringify(ownedCards));
+                        }
+
+                        // Gestion et incrémentation du nombre de boosters ouverts
+                        let boostersCount = parseInt(localStorage.getItem('mixit_boosters_opened')) || 0;
+                        boostersCount++;
+                        localStorage.setItem('mixit_boosters_opened', boostersCount);
+
+                        const targetCard = document.querySelector(`[data-name="${winner.strDrink}"]`);
+                        if (targetCard) {
+                            targetCard.classList.add('owned');
+                        }
+
+                        // Mettre à jour les compteurs immédiatement si on est sur la page
+                        updateProfileStats();
+                    }, 3000);
+
+                } catch (e) {
+                    console.error(e);
+                }
+            });
+        }
 
         boosterPopup.addEventListener('click', function(event) {
             if (event.target === boosterPopup || event.target === closePopupBtn) {

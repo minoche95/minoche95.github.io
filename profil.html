@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixit - Profil</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Neonderthaw&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-box">
+            <img src="img/logo.png" alt="logo" class="logo">
+            <h1>Mixit</h1>
+        </div>
+        
+        <div class="burger-menu" id="burgerToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <article class="menu" id="navMenu">
+            <a href="index.html" class="categorie">HOME</a>
+            <a href="cards.html" class="categorie">CARDS</a>
+            <a href="register.html" class="categorie">S'INSCRIRE</a>
+            <a href="login.html" class="categorie">LOGIN</a>
+            <a href="profil.html" class="categorie">PROFIL</a>
+        </article>
+    </header>
+
+    <main id="swup" class="transition-fade">
+        <section class="profile-container">
+            
+            <div class="profile-card">
+                <div class="avatar-box">
+                    <img src="img/avatar.jpg" alt="Avatar Utilisateur" class="profile-avatar">
+                </div>
+                <h2>Minoche</h2>
+                <p class="profile-title">Collectionneur de Cocktails</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3 id="stat-owned">0</h3>
+                    <p>Cartes possédées</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="stat-boosters">0</h3>
+                    <p>Boosters ouverts</p>
+                </div>
+                <div class="stat-box">
+                    <h3 id="stat-favorites">0</h3>
+                    <p>Cocktails favoris</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <button onclick="resetLocalStorage()" style="position: fixed; bottom: 10px; left: 10px; z-index: 9999; opacity: 0.7;">
+        Reset Dev Data
+    </button>
+    
+    <script defer src="https://unpkg.com/swup@4"></script>
+    <script defer src="https://unpkg.com/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+    <script defer type="module" src="https://unpkg.com/@google/model-viewer@latest/dist/model-viewer.min.js"></script>
+    <script defer src="main.js"></script>
+</body>
+</html>

@@ -15,15 +15,11 @@
             <h1>Mixit</h1>
         </div>
         <article class="menu" id="navMenu">
-            <a href="index.php" class="categorie">HOME</a>
-            <a href="cards.php" class="categorie">CARDS</a>
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <span class="categorie" style="color: #ffcc00;">Salut, <?php echo htmlspecialchars($_SESSION['pseudo']); ?></span>
-                <a href="logout.php" class="categorie" data-no-swup>LOGOUT</a>
-            <?php else: ?>
-                <a href="profile.php" class="categorie">S'INSCRIRE</a>
-                <a href="login.php" class="categorie">LOGIN</a>
-            <?php endif; ?>
+            <a href="index.html" class="categorie">HOME</a>
+            <a href="cards.html" class="categorie">CARDS</a>
+            <a href="register.html" class="categorie">S'INSCRIRE</a>
+            <a href="login.html" class="categorie">LOGIN</a>
+            <a href="profil.html" class="categorie">PROFIL</a>
         </article>
     </header>
 

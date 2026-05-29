@@ -175,6 +175,39 @@
   transform: scale(1.1);
 }
 
+/* --- EFFET ROULLETTE BOOSTER --- */
+.roulette-container {
+  position: relative;
+  width: 200px;
+  height: 280px;
+  overflow: hidden;
+  border: 3px solid #d4af37;
+  border-radius: 15px;
+  box-shadow: 0 0 20px #d4af37;
+  background: #1f3566;
+}
+
+.roulette-wrapper {
+  display: flex;
+  flex-direction: column;
+  transition: transform 3s cubic-bezier(0.1, 1, 0.1, 1); /* Effet freinage */
+}
+
+.roulette-wrapper img {
+  width: 200px;
+  height: 280px;
+  object-fit: cover;
+}
+
+.owned-text {
+  display: none;
+}
+
+/* Affiche si carte débloquée */
+.card-wrapper.owned .owned-text {
+  display: inline-block;
+}
+
 .close-popup {
   position: absolute;
   top: 20px;

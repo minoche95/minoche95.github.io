@@ -1,7 +1,8 @@
-/* --- IMPORTATION DES MODULES --- */
+/* --- IMPORTATION --- */
 @import url("css/home.css");
 @import url("css/cards.css");
 @import url("css/forms.css");
+@import url("css/profil.css");
 
 /* --- BASE ET FOND DE PAGE --- */
 * {
@@ -58,9 +59,10 @@ h1 {
   animation: glowTitle 0.8s alternate infinite;
   margin: 0;
   line-height: 1;
+  width: 100%;
 }
 
-/* --- MENU DE NAVIGATION --- */
+/* --- MENU NAVIGATION --- */
 .menu {
   color: #fff;
   background: #1f3566;
@@ -132,7 +134,6 @@ html.is-animating .transition-fade {
     font-size: 50px;
   }
 
-  /* Style du bouton burger */
   .burger-menu {
     display: flex;
     flex-direction: column;
@@ -155,7 +156,6 @@ html.is-animating .transition-fade {
     transition: all 0.3s ease;
   }
 
-  /* Masquage du menu par défaut */
   .menu {
     display: none;
     flex-direction: column;
@@ -165,7 +165,6 @@ html.is-animating .transition-fade {
     background: #1f3566;
   }
 
-  /* Affichage du menu quand il est actif */
   .menu.active {
     display: flex;
   }
@@ -176,7 +175,6 @@ html.is-animating .transition-fade {
     padding: 5px 0;
   }
 
-  /* Animation du burger en croix (X) */
   .burger-menu.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
   }

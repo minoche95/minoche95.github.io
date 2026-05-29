@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mixit - Connexion</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Neonderthaw&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-box">
+            <img src="img/logo.png" alt="logo" class="logo">
+            <h1>Mixit</h1>
+        </div>
+        
+        <div class="burger-menu" id="burgerToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <article class="menu" id="navMenu">
+            <a href="index.html" class="categorie">HOME</a>
+            <a href="cards.html" class="categorie">CARDS</a>
+            <a href="register.html" class="categorie">S'INSCRIRE</a>
+            <a href="login.html" class="categorie">LOGIN</a>
+            <a href="profil.html" class="categorie">PROFIL</a>
+        </article>
+    </header>
+
+<main id="swup" class="transition-fade">
+    <form action="" method="POST" class="form" id="loginForm">
+
+        <div>
+            <input type="email" name="email" id="email" class="form-checkbox" placeholder="E-mail" required>
+        </div>
+
+        <div>
+            <input type="password" name="password" id="password" class="form-checkbox" placeholder="Mot de passe" required>
+        </div>
+
+        <button type="submit" class="submit-button">Se connecter</button>
+    </form>
+</main>
+
+<script defer src="https://unpkg.com/swup@4"></script>
+<script defer src="https://unpkg.com/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+<script defer type="module" src="https://unpkg.com/@google/model-viewer@latest/dist/model-viewer.min.js"></script>
+<script defer src="main.js"></script>
+</body>
+</html>

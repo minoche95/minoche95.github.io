@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -24,15 +21,11 @@ session_start();
         </div>
 
         <article class="menu" id="navMenu">
-            <a href="index.php" class="categorie">HOME</a>
-            <a href="cards.php" class="categorie">CARDS</a>
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <span class="categorie" style="color: #ffcc00;">Salut, <?php echo htmlspecialchars($_SESSION['pseudo']); ?></span>
-                <a href="logout.php" class="categorie" data-no-swup>LOGOUT</a>
-            <?php else: ?>
-                <a href="profile.php" class="categorie">S'INSCRIRE</a>
-                <a href="login.php" class="categorie">LOGIN</a>
-            <?php endif; ?>
+            <a href="index.html" class="categorie">HOME</a>
+            <a href="cards.html" class="categorie">CARDS</a>
+            <a href="register.html" class="categorie">S'INSCRIRE</a>
+            <a href="login.html" class="categorie">LOGIN</a>
+            <a href="profil.html" class="categorie">PROFIL</a>
         </article>
     </header>
 
@@ -52,17 +45,29 @@ session_start();
         <button class="floating-btn" id="boosterBtn">Ouvrir un Booster</button>
 
         <div class="booster-popup" id="boosterPopup">
-            <button class="close-popup" id="closePopupBtn">&times;</button>
+        <button class="close-popup" id="closePopupBtn">X</button>
+        
+        <div class="booster-content">
+            <img src="img/booster.png" alt="Booster" id="boosterImg" class="booster-img" data-tilt data-tilt-max="15">
             
-            <div class="booster-content">
-                <img src="img/booster.png" alt="Booster" id="boosterImg" class="booster-img" data-tilt data-tilt-max="15">
+            <div class="roulette-container" id="rouletteContainer" style="display: none;">
+                <div class="roulette-wrapper" id="rouletteWrapper">
+                    </div>
+                <div class="roulette-marker"></div>
             </div>
+            
+            <h2 id="winMessage" style="display: none; color: #d4af37; margin-top: 20px;"></h2>
         </div>
+    </div>
     </main>
 
     <footer>
 
     </footer>
+
+    <button onclick="resetLocalStorage()" style="position: fixed; bottom: 10px; left: 10px; z-index: 9999; opacity: 0.7;">
+        Reset Dev Data
+    </button>
 
     <script defer src="https://unpkg.com/swup@4"></script>
     <script defer src="https://unpkg.com/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
