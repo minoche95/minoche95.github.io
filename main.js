@@ -244,7 +244,7 @@ function init() {
         });
     }
 
-    // Menu Burger
+    // Menu Burger (Correction Mobile & Swup)
     const burgerToggle = document.querySelector('#burgerToggle');
     const navMenu = document.querySelector('#navMenu');
 
@@ -252,8 +252,11 @@ function init() {
         burgerToggle.classList.remove('active');
         navMenu.classList.remove('active');
 
-        burgerToggle.addEventListener('click', function() {
-            burgerToggle.classList.toggle('active');
+        burgerToggle.replaceWith(burgerToggle.cloneNode(true));
+        const newBurgerToggle = document.querySelector('#burgerToggle');
+        
+        newBurgerToggle.addEventListener('click', function() {
+            newBurgerToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
     }
@@ -307,14 +310,12 @@ function init() {
                         winMessage.innerText = `Tu as obtenu : ${winner.strDrink} !`;
                         winMessage.style.display = 'block';
 
-                        // Sauvegarde de la carte obtenue
                         let ownedCards = JSON.parse(localStorage.getItem('mixit_owned')) || [];
                         if (!ownedCards.includes(winner.strDrink)) {
                             ownedCards.push(winner.strDrink);
                             localStorage.setItem('mixit_owned', JSON.stringify(ownedCards));
                         }
 
-                        // Gestion et incrémentation du nombre de boosters ouverts
                         let boostersCount = parseInt(localStorage.getItem('mixit_boosters_opened')) || 0;
                         boostersCount++;
                         localStorage.setItem('mixit_boosters_opened', boostersCount);
@@ -324,7 +325,6 @@ function init() {
                             targetCard.classList.add('owned');
                         }
 
-                        // Mettre à jour les compteurs si on est sur la page
                         updateProfileStats();
                     }, 3000);
 
